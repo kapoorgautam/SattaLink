@@ -1,5 +1,6 @@
 import React from "react";
 import Color from "./Color";
+import Navbar from "./Navbar";
 
 const NumberChart = () => {
   const numberArr = JSON.parse(localStorage.getItem("numberArr")) || [];
@@ -16,14 +17,15 @@ const NumberChart = () => {
   ].reverse();
 
   const prettifyDate = (i, parts) => {
-    const time = new Date().getTime() - (i + 1) * 3600 * 24 * 1000;
+    const time = new Date().getTime() - i * 3600 * 24 * 1000;
     const date = new Date(time);
     const options = { month: "short", day: "numeric" };
     return date.toLocaleString("en-US", options);
   };
   return (
     <div>
-      <h1>Past color chart</h1>
+      <Navbar />
+      <h1>Past number chart</h1>
       <div
         style={{ maxHeight: "100vh", overflowY: "auto", textAlign: "center" }}
       >
@@ -40,7 +42,7 @@ const NumberChart = () => {
           </thead>
           <tbody>
             {Array.from({
-              length: Math.floor((numberArr?.length - 9) / 8),
+              length: Math.floor((numberArr?.length - 1) / 8),
             }).map((_, i) => (
               <tr>
                 <td>{prettifyDate(i, 8)}</td>
@@ -49,7 +51,7 @@ const NumberChart = () => {
                     <td>
                       <strong>
                         {
-                          numberArr?.slice(0, numberArr?.length - 9).reverse()[
+                          numberArr?.slice(0, numberArr?.length - 1).reverse()[
                             i * 8 + ind
                           ]
                         }
