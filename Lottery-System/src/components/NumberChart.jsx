@@ -5,19 +5,10 @@ import Navbar from "./Navbar";
 const NumberChart = () => {
   const numberArr = JSON.parse(localStorage.getItem("numberArr")) || [];
   const time2 = ["2AM", "6AM", "10AM", "2PM"].reverse();
-  const time = [
-    "2AM",
-    "4AM",
-    "6AM",
-    "8AM",
-    "10AM",
-    "12PM",
-    "2PM",
-    "4PM",
-  ].reverse();
+  const time = ["2AM", "4AM", "6AM", "8AM", "10AM", "12PM", "2PM", "4PM"];
 
   const prettifyDate = (i, parts) => {
-    const time = new Date().getTime() - i * 3600 * 24 * 1000;
+    const time = new Date("09-01-2024").getTime() + i * 3600 * 24 * 1000;
     const date = new Date(time);
     const options = { month: "short", day: "numeric" };
     return date.toLocaleString("en-US", options);
@@ -42,7 +33,7 @@ const NumberChart = () => {
           </thead>
           <tbody>
             {Array.from({
-              length: Math.floor((numberArr?.length - 1) / 8),
+              length: Math.floor((numberArr?.length - 1) / 8) - 6,
             }).map((_, i) => (
               <tr>
                 <td>{prettifyDate(i, 8)}</td>
@@ -51,7 +42,7 @@ const NumberChart = () => {
                     <td>
                       <strong>
                         {
-                          numberArr?.slice(0, numberArr?.length - 1).reverse()[
+                          numberArr?.slice(53, numberArr?.length - 1)[
                             i * 8 + ind
                           ]
                         }
