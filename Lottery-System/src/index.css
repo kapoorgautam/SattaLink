@@ -5,18 +5,96 @@
 
   color-scheme: light dark;
 
+ 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.marquee-container {
+  width: 100%;
+  overflow: hidden; /* Hide any overflow content */
+  /* background-color: #f0f0f0; Light gray background for the marquee */
+  padding: 10px 0; /* Padding for top and bottom */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
+.marquee {
+  display: flex; /* Display sentences in a row */
+  gap: 50px; /* Add some space between sentences */
+  animation: marquee 15s linear infinite forwards; /* Animate the text scrolling */
+}
+
+.marquee p {
+  white-space: nowrap; /* Ensure the text doesn't wrap to the next line */
+  margin: 0; /* Remove any default margin */
+}
+
+@keyframes marquee {
+  from {
+      transform: translateX(0%); /* Start position: normal position */
+  }
+  to {
+      transform: translateX(-50%); /* End position: halfway scroll */
+  }
+}
+
+/*  */
+
+
+/* styles.css */
+.text-container {
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+ 
+}
+
+.blink-text {
+  
+  font-size: 2rem;
+  font-weight: bold;
+  color: rgb(246, 241, 241);
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+/* styles.css */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.card1 {
+  flex: 0 1 calc(50% - 1rem); /* 2 columns with gap */
+  box-sizing: border-box;
+}
+
+/* Add this if you want to add specific styling for the card name */
+.card-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 0.5rem;
+}
+
 
 .makerow {
   display: flex;
   flex-direction: row;
-  /* display: inline-block; */
-  /* margin-bottom: 10px; */
+  display: inline-block; 
+   margin-bottom: 10px;
 }
 
 .makecol {
@@ -31,9 +109,17 @@
   border-radius: 20px;
 }
 
+.t-hover{
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+  /* background-color: aliceblue; */
+
 .boxes1 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 120px;
   gap: 1rem;
   margin-left: 2rem;
   margin-right: 2rem;
@@ -41,9 +127,9 @@
 
 .boxes2 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  width: 80vw;
+  width: 50vw;
 }
 
 @media (max-width: 768px) {

@@ -1,10 +1,14 @@
 import React from "react";
 import Color from "./Color";
 import Navbar from "./Navbar";
+import '../index.css'
+import { useLanguage } from "./LanguageContext";
+import { translations } from "../translator/translations";
 
 const ColorChart = () => {
   const colorArr = JSON.parse(localStorage.getItem("colorArr")) || [];
-  const time2 = ["2AM", "6AM", "10AM", "2PM"];
+  const time2 = ["2 PM", "2:30 PM"];
+  const { language } = useLanguage();
   const prettifyDate = (i, parts) => {
     const time = new Date("09-01-2024").getTime() + i * 3600 * 24 * 1000;
     const date = new Date(time);
@@ -14,11 +18,11 @@ const ColorChart = () => {
   return (
     <div>
       <Navbar />
-      <h1>Past color chart</h1>
+      <h1>  {translations[language].btn1}</h1>
       <div
         style={{ maxHeight: "100vh", overflowY: "auto", textAlign: "center" }}
       >
-        <table className="table table-hover table-striped">
+        <table className="table t-hover table-striped">
           <thead className="table-dark">
             <tr>
               <th scope="col">Date</th>
@@ -29,13 +33,13 @@ const ColorChart = () => {
               ))}
             </tr>
           </thead>
-          <tbody>
+          <tbody  style={{ textAlign: "center", color:"white" }} >
             {Array.from({
               length: Math.floor((colorArr?.length - 7 - 40 - 16) / 4),
             }).map((_, i) => (
               <tr>
                 <td>{prettifyDate(i, 4)}</td>
-                {Array.from({ length: 4 }).map((_, ind) => {
+                {Array.from({ length: 2 }).map((_, ind) => {
                   return (
                     <td>
                       <Color

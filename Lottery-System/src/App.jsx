@@ -10,6 +10,7 @@ import Errorpage from "./components/Errorpage";
 import Signin from "./components/Signin";
 import ColorChart from "./components/ColorChart";
 import NumberChart from "./components/NumberChart";
+import { LanguageProvider } from './components/LanguageContext';
 
 function App() {
   const baseURL = "http://localhost:4000";
@@ -44,7 +45,9 @@ function App() {
   ]);
   return (
     <>
+      <LanguageProvider>
       <RouterProvider router={router} />
+      </LanguageProvider>
     </>
   );
 }
