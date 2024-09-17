@@ -26,7 +26,7 @@ export default function Avatar1({ info }) {
       return;
     }
     axios
-      .post("https://lottery-mangement-system-1.onrender.com/changepasswor", {
+      .post("https://lottery-mangement-system-1.onrender.com/changepassword", {
         userid: userinfo._id,
         password: password,
         email: email,
